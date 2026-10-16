@@ -5,319 +5,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Jery A. Pequitpequit | My Portfolio</title>
+    <title>Jery A. Pequitpequit | Portfolio</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
 
-    <style type="text/tailwindcss">
-        @custom-variant dark (&:where(.dark, .dark *));
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-        @layer components {
-            .btn-primary {
-                @apply rounded-xl bg-red-600 px-6 py-3 font-semibold text-white transition duration-300 hover:bg-orange-500 hover:shadow-lg;
-            }
+        body {
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-            .section-card {
-                @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800;
-            }
+        .light-mode {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
 
-            .form-input {
-                @apply w-full rounded-lg border border-slate-300 bg-white p-3 text-slate-900 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-200 dark:border-slate-600 dark:bg-slate-900 dark:text-white dark:focus:ring-red-900;
-            }
+        .light-mode header,
+        .light-mode footer {
+            background-color: #e2e8f0;
+        }
+
+        .light-mode .card {
+            background-color: white;
+            border-color: #cbd5e1;
+        }
+
+        .light-mode .description {
+            color: #475569;
+        }
+
+        .light-mode .contact-input {
+            background-color: white;
+            color: #1e293b;
+            border-color: #cbd5e1;
+        }
+
+        .contact-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #475569;
+            border-radius: 6px;
+            background-color: #0f172a;
+            color: white;
+        }
+
+        .contact-input:focus {
+            outline: 2px solid #06b6d4;
         }
     </style>
 </head>
 
-<body class="bg-slate-100 text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-
-    <header class="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-        <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
-
-            <a href="#" class="text-xl font-extrabold text-red-600">
-                JERY<span class="text-slate-800 dark:text-white">.DEV</span>
-            </a>
-
-            <ul class="flex flex-wrap items-center gap-5 text-sm font-medium">
-                <li>
-                    <a href="#projects" class="transition hover:text-red-500">Projects</a>
-                </li>
-                <li>
-                    <a href="#services" class="transition hover:text-red-500">Services</a>
-                </li>
-                <li>
-                    <a href="#contact" class="transition hover:text-red-500">Contact</a>
-                </li>
-            </ul>
-
-            <div class="flex gap-2">
-                <button id="switch"
-                    class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-700">
-                    Switch Color
-                </button>
-
-                <button id="toggledark"
-                    class="rounded-lg bg-slate-200 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
-                    aria-pressed="true">
-                    Light Mode
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="mx-auto max-w-6xl px-6">
+<body class="bg-slate-950 text-white min-h-screen">
 
     
-        <section class="py-20 text-center sm:py-28">
+    <header class="bg-slate-900 border-b border-slate-700">
+        <div class="max-w-5xl mx-auto px-6 py-6">
 
-            <p class="mb-4 font-semibold uppercase tracking-[0.25em] text-red-500">
-                Welcome to my portfolio
-            </p>
+            <div class="flex justify-between items-center gap-4 flex-wrap">
+                <h1 id="title" class="text-2xl font-bold">
+                    Jery <span class="text-cyan-400">A. Pequitpequit</span>
+                </h1>
+                 <button id="darkMode"
+                    class="border border-slate-500 px-4 py-2 stay-lg hover:bg-slate-700">
+                   Toggle Dark Mode
+                </button>
 
-            <h1 id="hero-title" class="text-4xl font-extrabold tracking-tight sm:text-6xl">
-                Jery A. Pequitpequit
-            </h1>
+                <button id="replay"
+                class="border border-lime-400 text-lime-300 px-5 py-3 rounded-full hover:bg-lime-400 hover:text-emerald-950 transition">
+                Replay Timeline
+            </button>
 
-            <h2 class="mt-5 text-2xl font-bold text-slate-500 dark:text-slate-400 sm:text-3xl"></h2>
 
-            <p class="mx-auto mt-6 max-w-2xl leading-8 text-slate-600 dark:text-slate-400"></p>
-
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="#projects" class="btn-primary">View My Projects</a>
-
-                <a href="#contact"
-                    class="rounded-xl border border-slate-300 px-6 py-3 font-semibold transition hover:border-red-500 hover:text-red-500 dark:border-slate-700">
-                    Contact Me
-                </a>
             </div>
 
-            <p class="mt-8 text-sm text-slate-500 dark:text-slate-400">
-                @jerypequitpequit
+            <p id="subtitle" class="text-slate-400 mt-3 description">
+                Web Developer | Portfolio Designer
             </p>
-        </section>
 
-        <section id="projects" class="scroll-mt-10 py-12">
+            <nav class="flex gap-6 flex-wrap mt-6 text-sm">
+                <a href="#home" class="hover:text-cyan-400">Home</a>
+                <a href="#projects" class="hover:text-cyan-400">Projects</a>
+                <a href="#services" class="hover:text-cyan-400">Services</a>
+                <a href="#contact" class="hover:text-cyan-400">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-            <div class="mb-8">
-                <p class="font-semibold uppercase tracking-widest text-red-500">My Work</p>
-                <h2 class="mt-2 text-3xl font-bold sm:text-4xl">My Projects</h2>
-                <p class="mt-3 text-slate-600 dark:text-slate-400">
-                </p>
-            </div>
+    <main id="home" class="max-w-5xl mx-auto px-6 py-12">
 
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+       
+        <section class="py-10" id="intro">
+            <p class="text-cyan-400 font-semibold mb-3">WELCOME TO MY PORTFOLIO</p>
 
-                <article class="section-card">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-red-100 text-2xl dark:bg-red-950">
-                        
-                    </div>
-                    <h3 class="text-xl font-bold">Personal Portfolio</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                        
-                    </p>
-                </article>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                Hello World.
+            </h2>
 
-                <article class="section-card">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-2xl dark:bg-blue-950">
-                        
-                    </div>
-                    <h3 class="text-xl font-bold">Payroll System</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                       
-                    </p>
-                </article>
-
-                <article class="section-card">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-2xl dark:bg-green-950">
-                    
-                    </div>
-                    <h3 class="text-xl font-bold">Company Website</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                        
-                    </p>
-                </article>
-
-                <article class="section-card">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100 text-2xl dark:bg-purple-950">
+            <p class="description text-slate-400 mt-5 max-w-xl leading-7">
                 
-                    </div>
-                    <h3 class="text-xl font-bold">Startup Website</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                    </p>
-                </article>
+            </p>
 
-                <article class="section-card sm:col-span-2 lg:col-span-2">
-                    <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-2xl dark:bg-orange-950">
-                        
-                    </div>
-                    <h3 class="text-xl font-bold">Compliance Monitoring System</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                    </p>
-                </article>
+            <div class="flex gap-3 flex-wrap mt-6">
+                <a href="#projects"
+                    class="bg-cyan-600 hover:bg-cyan-500 px-5 py-3 rounded-lg text-white">
+                    View Projects
+                </a>
 
+                <button id="replay"
+                    class="border border-slate-500 px-5 py-3 rounded-lg hover:bg-slate-800">
+                    Replay Intro
+                </button>
             </div>
         </section>
 
-        <section id="services" class="scroll-mt-10 py-16">
+       
+        <section id="projects" class="py-10">
+            <h2 class="text-2xl font-bold mb-2">My Projects</h2>
 
-            <div class="mb-8">
-                <p class="font-semibold uppercase tracking-widest text-blue-500">What I Do</p>
-                <h2 class="mt-2 text-3xl font-bold sm:text-4xl">My Services</h2>
-                <p class="mt-3 text-slate-600 dark:text-slate-400"
-                </p>
-            </div>
+            <p class="description text-slate-400 mb-6">
+                Some systems and websites I have worked on.
+            </p>
 
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="grid md:grid-cols-2 gap-5">
 
-                <article class="section-card">
-                    <h3 class="text-lg font-bold"> Website Creation</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                    </p>
-                </article>
-
-                <article class="section-card">
-                    <h3 class="text-lg font-bold"> System Development</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400" </p>
-                </article>
-
-                <article class="section-card">
-                    <h3 class="text-lg font-bold"> AI Automation</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400"></p>
-                </article>
-
-                <article class="section-card">
-                    <h3 class="text-lg font-bold">Database Management</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                    
-                </article>
-
-                <article class="section-card">
-                    <h3 class="text-lg font-bold"> Project Management</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
+                <article class="card bg-slate-900 border border-slate-700 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold">Portfolio Website</h3>
+                    <p class="description text-slate-400 mt-3 leading-6">
                        
                     </p>
+                    <p class="text-cyan-400 text-sm mt-4"></p>
                 </article>
 
-                <article class="section-card">
-                    <h3 class="text-lg font-bold">Systems Analysis</h3>
-                    <p class="mt-3 leading-7 text-slate-600 dark:text-slate-400">
+                <article class="card bg-slate-900 border border-slate-700 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold">Payroll System</h3>
+                    <p class="description text-slate-400 mt-3 leading-6">
+                        
                     </p>
+                    <p class="text-cyan-400 text-sm mt-4"></p>
+                </article>
+
+                <article class="card bg-slate-900 border border-slate-700 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold">Business Website</h3>
+                    <p class="description text-slate-400 mt-3 leading-6">
+                        
+                    </p>
+                    <p class="text-cyan-400 text-sm mt-4"></p>
+                </article>
+
+                <article class="card bg-slate-900 border border-slate-700 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold">Database System</h3>
+                    <p class="description text-slate-400 mt-3 leading-6">
+                        A basic system for storing and managing records.
+                    </p>
+                    <p class="text-cyan-400 text-sm mt-4"></p>
                 </article>
 
             </div>
         </section>
 
-        <section id="contact" class="scroll-mt-10 py-16">
+       
+        <section id="services" class="py-10">
+            <h2 class="text-2xl font-bold mb-6">My Services</h2>
 
-            <div class="mx-auto max-w-2xl rounded-3xl bg-white p-8 shadow-xl dark:bg-slate-800 sm:p-10">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-                <div class="mb-8 text-center">
-                    <p class="font-semibold uppercase tracking-widest text-red-500">
-                        Get in Touch
-                    </p>
-                    <h2 class="mt-2 text-3xl font-bold sm:text-4xl">
-                        Let's Build Together!
-                    </h2>
-                    <p class="mt-4 text-slate-600 dark:text-slate-400">
-                        Have a project or an idea? Send me a message.
+                <div class="card bg-slate-900 border border-slate-700 rounded-lg p-5">
+                    <h3 class="font-semibold">Web Development</h3>
+                    <p class="description text-slate-400 text-sm mt-2">
+                        Simple and responsive websites.
                     </p>
                 </div>
 
-                <form id="contact-form" class="flex flex-col gap-5">
+                <div class="card bg-slate-900 border border-slate-700 rounded-lg p-5">
+                    <h3 class="font-semibold">System Development</h3>
+                    <p class="description text-slate-400 text-sm mt-2">
+                       
+                    </p>
+                </div>
 
-                    <div>
-                        <label for="name" class="mb-2 block font-semibold">Name</label>
-                        <input id="name" name="name" type="text"
-                            placeholder="Enter your name"
-                            autocomplete="name" required class="form-input">
-                    </div>
+                <div class="card bg-slate-900 border border-slate-700 rounded-lg p-5">
+                    <h3 class="font-semibold">Database Management</h3>
+                    <p class="description text-slate-400 text-sm mt-2">
+                        
+                    </p>
+                </div>
 
-                    <div>
-                        <label for="email" class="mb-2 block font-semibold">Email</label>
-                        <input id="email" name="email" type="email"
-                            placeholder="Enter your email"
-                            autocomplete="email" required class="form-input">
-                    </div>
-
-                    <div>
-                        <label for="message" class="mb-2 block font-semibold">Message</label>
-                        <textarea id="message" name="message" rows="5"
-                            placeholder="Write your message here..."
-                            required class="form-input"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn-primary w-full">
-                        Send Message →
-                    </button>
-
-                    <p id="form-status" class="text-center text-sm" aria-live="polite"></p>
-
-                </form>
             </div>
+        </section>
+
+        
+        <section id="contact" class="py-10">
+            <h2 class="text-2xl font-bold">Contact Me</h2>
+
+            <p class="description text-slate-400 mt-3">
+                
+            </p>
+
+            <form id="contactForm"
+                class="card bg-slate-900 border border-slate-700 rounded-lg p-6 mt-6 max-w-xl">
+
+                <div class="mb-4 text-left">
+                    <label for="name" class="block mb-2">Name</label>
+                    <input id="name" name="name" type="text"
+                        class="contact-input"
+                        placeholder="Enter your name" required>
+                </div>
+
+                <div class="mb-4 text-left">
+                    <label for="email" class="block mb-2">Email</label>
+                    <input id="email" name="email" type="email"
+                        class="contact-input"
+                        placeholder="Enter your email" required>
+                </div>
+
+                <div class="mb-4 text-left">
+                    <label for="message" class="block mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4"
+                        class="contact-input"
+                        placeholder="Write your message" required></textarea>
+                </div>
+
+                <button type="submit"
+                    class="bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-3 rounded-lg w-full">
+                    Send Message
+                </button>
+
+                <p id="formStatus" class="text-cyan-400 text-sm mt-4"
+                    aria-live="polite"></p>
+            </form>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="mt-12 border-t border-slate-200 bg-white px-6 py-8 text-center dark:border-slate-800 dark:bg-slate-900">
-        <p class="font-semibold">Jery A. Pequitpequit</p>
-        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">
-            © <span id="year"></span> My Portfolio. All rights reserved.
-        </p>
+   
+    <footer class="bg-slate-900 border-t border-slate-700 mt-10">
+        <div class="max-w-5xl mx-auto px-6 py-6 text-center">
+            <p class="description text-slate-400 text-sm">
+                © 2026 Jery A. Pequitpequit | My Portfolio
+            </p>
+            <a href="#home" class="text-cyan-400 text-sm inline-block mt-3">
+                Back to Top ↑
+            </a>
+        </div>
     </footer>
 
     <script>
-        const html = document.documentElement;
-        const darkButton = document.getElementById("toggledark");
-        const switchButton = document.getElementById("switch");
-        const heroTitle = document.getElementById("hero-title");
+        const darkModeButton = document.querySelector("#darkMode");
+        const replayButton = document.querySelector("#replay");
+        const body = document.body;
 
-        darkButton.addEventListener("click", function () {
-            html.classList.toggle("dark");
-
-            const isDark = html.classList.contains("dark");
-
-            darkButton.textContent = isDark ? "Light Mode" : "Dark Mode";
-            darkButton.setAttribute("aria-pressed", String(isDark));
+      
+        const intro = gsap.timeline({
+            paused: true,
+            defaults: {
+                duration: 0.7,
+                ease: "power2.out"
+            }
         });
 
-        let blueTheme = false;
+        intro
+            .from("#title", {
+                y: 25,
+                opacity: 0
+            })
+            .from("#subtitle", {
+                y: 15,
+                opacity: 0
+            }, "-=0.3")
+            .from("#intro > *", {
+                y: 20,
+                opacity: 0,
+                stagger: 0.15
+            }, "-=0.2")
+            .from(".card", {
+                y: 20,
+                opacity: 0,
+                stagger: 0.12
+            }, "-=0.2");
 
-        switchButton.addEventListener("click", function () {
-            blueTheme = !blueTheme;
+        intro.play();
 
-            const redClasses = ["text-red-600", "bg-red-600", "hover:bg-red-700"];
-            const blueClasses = ["text-blue-600", "bg-blue-600", "hover:bg-blue-700"];
-
-            heroTitle.classList.remove(
-                "text-red-600",
-                "text-blue-600"
-            );
-
-            heroTitle.classList.add(
-                blueTheme ? "text-blue-600" : "text-red-600"
-            );
-
-            switchButton.classList.remove(...redClasses, ...blueClasses);
-
-            switchButton.classList.add(
-                ...(blueTheme ? blueClasses : redClasses)
-            );
-
-            switchButton.textContent = blueTheme ? "Blue Theme" : "Red Theme";
+        
+        replayButton.addEventListener("click", () => {
+            intro.restart();
         });
-        document.getElementById("year").textContent = new Date().getFullYear();
 
-        document.getElementById("contact-form").addEventListener("submit", function (event) {
+        
+        darkModeButton.addEventListener("click", () => {
+            body.classList.toggle("light-mode");
+
+            gsap.fromTo(
+                darkModeButton,
+                { rotation: 0 },
+                {
+                    rotation: 360,
+                    duration: 0.6,
+                    ease: "power1.inOut",
+                    onComplete: () => {
+                        gsap.set(darkModeButton, { rotation: 0 });
+                    }
+                }
+            );
+        });
+
+        
+        document.querySelectorAll(".card").forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                gsap.to(card, {
+                    y: -4,
+                    duration: 0.2
+                });
+            });
+
+            card.addEventListener("mouseleave", () => {
+                gsap.to(card, {
+                    y: 0,
+                    duration: 0.2
+                });
+            });
+        });
+
+        
+        document.querySelector("#contactForm").addEventListener("submit", event => {
             event.preventDefault();
 
-            const name = document.getElementById("name").value.trim();
-            const status = document.getElementById("form-status");
+            document.querySelector("#formStatus").textContent =
+                "Thank you! This is a demo form. Your message was not sent.";
 
-            status.textContent = `Thank you, ${name}! The form works, but a backend is needed to deliver your message.`;
-            status.className = "text-center text-sm text-green-600 dark:text-green-400";
+            gsap.fromTo("#formStatus",
+                { opacity: 0, y: 8 },
+                { opacity: 1, y: 0, duration: 0.5 }
+            );
 
-            this.reset();
+            event.target.reset();
         });
     </script>
 
